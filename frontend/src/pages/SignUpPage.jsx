@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { MessageSquare, Mail, Eye, User, Lock, Loader2, EyeOff } from "lucide-react";
+import AuthImagePattern from "../components/AuthImagePattern";
+import { Link } from "react-router-dom";
 import { useAuthStore } from "../store/useAuthStore";
 
 const SignUpPage = () => {
@@ -10,6 +12,8 @@ const SignUpPage = () => {
     password: ""
   });
   const { signup, isSigningUp } = useAuthStore();
+
+  const validateForm = () => {};
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -35,7 +39,7 @@ const SignUpPage = () => {
                 <span className="label-text font-medium">Full Name</span>
               </label>
               <div className="relative">
-                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none z-10">
                   <User className="size-5 text-base-content/40" />
                 </div>
                 <input
@@ -53,7 +57,7 @@ const SignUpPage = () => {
                 <span className="label-text font-medium">Email</span>
               </label>
               <div className="relative">
-                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none z-10">
                   <Mail className="size-5 text-base-content/40" />
                 </div>
                 <input
@@ -71,7 +75,7 @@ const SignUpPage = () => {
                 <span className="label-text font-medium">Password</span>
               </label>
               <div className="relative">
-                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none z-10">
                   <Lock className="size-5 text-base-content/40" />
                 </div>
                 <input
@@ -106,8 +110,22 @@ const SignUpPage = () => {
               )}
             </button>
           </form>
+
+          <div className="text-center">
+            <p className="text-base-content/60">
+              Already have an account?{" "}
+              <Link to="/login" className="link link-primary">
+                Sign in
+              </Link>
+            </p>
+          </div>
         </div>
       </div>
+
+      <AuthImagePattern
+        title="Join our community"
+        subtitle="Connect with friends, share moments, and stay in touch with your loved ones."
+      />
     </div>
   );
 };
